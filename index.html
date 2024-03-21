@@ -32,11 +32,69 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "287125210";
+    const serviceWorkerVersion = "3316914061";
   </script>
   <!-- This script adds the flutter initialization JS code -->
+
+
   <script src="flutter.js" defer=""></script>
-  <style>
+  <style id="splash-screen-style">
+    html {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      min-height: 100%;
+      background-color: #FFFFFF;
+          background-size: 100% 100%;
+    }
+
+    .center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .contain {
+      display:block;
+      width:100%; height:100%;
+      object-fit: contain;
+    }
+
+    .stretch {
+      display:block;
+      width:100%; height:100%;
+    }
+
+    .cover {
+      display:block;
+      width:100%; height:100%;
+      object-fit: cover;
+    }
+
+    .bottom {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      -ms-transform: translate(-50%, 0);
+      transform: translate(-50%, 0);
+    }
+
+    .bottomLeft {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    .bottomRight {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
     .container {
       width: 100vw;
       height: 100vh;
@@ -45,17 +103,24 @@
       align-items: center;
     }
     .indicator{
-      width: 66v;
-      height: 66vh;
+      width: 66vw;
+      height: 66wh;
       object-fit: contain;
     }
   </style>
+  <script id="splash-screen-script">
+    function removeSplashFromWeb() {
+      document.getElementById("splash")?.remove();
+      document.getElementById("splash-branding")?.remove();
+      document.body.style.background = "transparent";
+    }
+  </script>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 </head>
 <body style="overflow: hidden">
 <div id="loading_indicator" class="container">
   <img class="indicator" src="./assets/loading.gif"/>
 </div>
-
 <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
@@ -71,6 +136,5 @@
       });
     });
   </script>
-
 
 </body></html>
